@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_10_18_121129) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "models", force: :cascade do |t|
     t.string "file"
     t.datetime "created_at", precision: 6, null: false
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_121129) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "aws_filename"
     t.index ["user_id"], name: "index_uploads_on_user_id"
   end

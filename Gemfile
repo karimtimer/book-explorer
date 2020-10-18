@@ -6,6 +6,7 @@ ruby '2.6.6'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 gem 'rspec-rails', '~> 3.8'
 gem 'puma', '~> 4.1'
+gem 'pg'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
@@ -18,7 +19,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'sqlite3', '~> 1.4'
+  # gem 'sqlite3', '~> 1.4'
 end
 
 

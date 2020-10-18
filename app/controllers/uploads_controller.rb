@@ -22,6 +22,12 @@ class UploadsController < ApplicationController
     upload = AmazonS3.new.uploader(params[:file], user_id)
 
     if upload.save
+      uri = URI.parse("https://enbrtwpe490a7.x.pipedream.net")
+      request = Net::HTTP::Post.new(uri)
+      request.set_form_data( "s3_url" => upload.url,)
+      req_options = { use_ssl: uri.scheme == "https", }
+      Net::HTTP.start(uri.hostname, uri.port, req_options) { |http| http.request(request) }
+
       redirect_to upload, success: 'File successfully uploaded'
     else
       flash.now[:notice] = 'There was an error'
