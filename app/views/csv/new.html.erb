@@ -1,6 +1,0 @@
-<h1>Upload a file</h1>
-
-<%= form_tag csv_path(1), enctype: 'multipart/form-data' do %>
-	<%= file_field_tag :file  %>
-	<%= submit_tag 'Upload file' %>
-<% end %>
