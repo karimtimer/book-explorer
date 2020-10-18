@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-lg-8 col-md-6 ml-auto mr-auto">
+    <h1><%="#{@upload.name}"%></h1>
+    <table border="0" cellspacing="5" cellpadding="5">
+      <tr>
+        <% @csv_table.first.keys.each do |header| %>
+          <th><%= header %></th>
+        <% end %> 
+      </tr>
+      <% @csv_table.each do |row| %>
+        <tr>
+          <% row.each do |element| %>
+            <td><%= element[1] %></td>
+          <% end %>
+        </tr>
+      <% end %> 
+    </table>
+  </div>
+</div>

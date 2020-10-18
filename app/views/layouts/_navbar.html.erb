@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container">
+    <%= link_to "BookExplorer", root_path, class: "navbar-brand" %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      </ul>
+
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="<%= uploads_index_path %>">My Uploads<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= uploads_new_path %>">Upload new File<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Edit Account", edit_user_registration_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link"%>
+            </li>
+          </ul>
+        <% else %>
+          <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

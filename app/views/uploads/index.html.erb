@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-8 col-md-6 ml-auto mr-auto">
+    <h1>All uploads</h1>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">created at</th>
+          <th scope="col">csv file name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>
+          <% @uploads.each_with_index do |upload, index| %>
+            <tr>
+              <td> <%= index %> </td>
+              <td> <%= upload.created_at %></td>
+              <td> <%= link_to upload.name, upload_path(upload) %></td>
+            </tr>
+        </div>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

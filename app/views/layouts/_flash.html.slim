@@ -1,0 +1,4 @@
+.row
+  - flash.each do |type, message|
+    div class="col-12 alert alert-#{bootstrap_class_for_flash(type)}" role=type
+      = message.html_safe
