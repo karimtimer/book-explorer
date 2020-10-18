@@ -12,15 +12,17 @@ CarrierWave.configure do |config|
 
   # Set custom options such as cache control to leverage browser caching.
   # You can use either a static Hash or a Proc.
-  config.aws_attributes = -> { {
-    expires: 1.week.from_now.httpdate,
-    cache_control: 'max-age=604800'
-  } }
+  config.aws_attributes = lambda {
+    {
+      expires: 1.week.from_now.httpdate,
+      cache_control: 'max-age=604800'
+    }
+  }
 
   config.aws_credentials = {
-    access_key_id:     Rails.application.credentials.aws[:access_key_id],
+    access_key_id: Rails.application.credentials.aws[:access_key_id],
     secret_access_key: Rails.application.credentials.aws[:secret_access_key],
-    region:            'eu-west-2', # Required
+    region: 'eu-west-2' # Required
     # stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
   }
 
