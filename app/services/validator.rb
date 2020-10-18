@@ -2,6 +2,7 @@ require 'csv'
 require 'set'
 require 'isbn'
 class Validator
+  CSV_HEADERS = 'Book Title,Book Author,Date published,ISBN,publishers name'.freeze
 
   def initialize file_param
     @filename = file_param&.tempfile&.path
@@ -12,27 +13,23 @@ class Validator
     return "No File" unless @filename
     return "No File" unless File.exist?(@filename)
 
-    content = File.read(@filename, :encoding => 'utf-8')
-    return "Wrong encoding" unless content.valid_encoding? #"Wrong encoding" 
+    headers, body = File.read(@filename, :encoding => 'utf-8').split("\n", 2)
+    return "Wrong header names" unless valid_headers?(headers)
+    return "Wrong encoding" unless body.valid_encoding? #"Wrong encoding" 
 
-    content.each_line{|line|
+    body.each_line{|line|
+      next if line == ",,,,"
       return "Wrong number of columns" if line.count(sep) < columns - 1
 
       isbn = line.split(sep)[3].to_s
-      debugger
-      ISBN.valid?(isbn)
+      return "ISBN: #{isbn} is not valid." unless ISBN.valid?(isbn)
+
       @isbn_arr << isbn
     }
-    isbn ? error_message(isbn) : "uploading"
+    "uploading"
   end
 
-  def isbn
-    s = Set.new
-    duplicate = @isbn_arr.find { |e| !s.add?(e) }
-    duplicate
-  end
-
-  def error_message isbn
-    "ISBN: #{isbn} should not appear more than once in the csv."
+  def valid_headers? headers
+    headers.include?(CSV_HEADERS)
   end
 end
