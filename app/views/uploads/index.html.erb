@@ -14,7 +14,7 @@
           <% @uploads.each_with_index do |upload, index| %>
             <tr>
               <td> <%= index %> </td>
-              <td> <%= upload.created_at %></td>
+              <td> <%= upload.created_at.to_formatted_s(:short)  %></td>
               <td> <%= link_to upload.name, upload_path(upload) %></td>
             </tr>
         </div>

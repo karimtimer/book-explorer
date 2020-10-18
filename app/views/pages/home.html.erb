@@ -9,6 +9,15 @@
           <a href="<%= uploads_path %>" class="btn btn-primary mt-2">View Previous Uploads</a>
         </div>
       </div>
+    <% else %>
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Welcom to Book Explorer!</h1>
+        <p class="lead">Wanting to store your previously bought, read books? This Applicatin will allow you to do just that :) </p>
+        <p class="lead">
+          <a href="<%= new_user_registration_path %>" class="btn btn-lg btn-secondary">Sign Up</a>
+          <a href="<%= new_user_session_path%>" class="btn btn-lg btn-secondary">Log In</a>
+        </p>
+      </main>
     <% end %>
   </div>
 </div>

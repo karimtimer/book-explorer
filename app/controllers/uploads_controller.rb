@@ -5,7 +5,7 @@ class UploadsController < ApplicationController
   def new; end
 
   def index
-    @uploads = current_user.uploads
+    @uploads = current_user.uploads.order(created_at: :desc)
   end
 
   def show
