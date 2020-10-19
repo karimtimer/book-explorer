@@ -1,22 +1,24 @@
 # Book Explorer
 
-A Ruby on Rails application that shows the content of a CSV file containing a list of books. CSV's are stored on Amazon's S3, and the application is currently being hosted here.
+A Ruby on Rails application that shows the content of a CSV file containing a list of books. CSV's are stored on Amazon's S3, and the application is currently being hosted here:
   - https://timersbookexplorer.herokuapp.com
 
-# Requirements
+# Install
 
-- [RVM](http://rvm.io/)
-- [Ruby 2.7.1](https://www.ruby-lang.org/en/news/2019/04/17/ruby-2-6-3-released/)
-- [Git](https://git-scm.com/)
+## Clone the repository
+
+```shell
+git clone https://github.com/karimtimer/book-explorer.git
+cd book-explorer
+```
+check you have [Ruby 2.7.1](https://www.ruby-lang.org/en/news/2019/04/17/ruby-2-6-3-released/)
+
 
 # Usage
 
-The application can be tested locally. After downloading the repository, run bundle install. Then run rake db:create db:migrate. After that, run rails server and the application will begin running on localhost:3000.
-
-# Run Rspec tests & rubocop
-- `$ bundle exec rspec` to run the test suite
-- `$ bundle exec rubocop` to run rubocop against code
-
+The application can be tested locally. After downloading the repository, run bundle install and download all dependencies. Then run 
+`rake db:create db:migrate` 
+After that, run rails server and the application will begin running on localhost:3000.
 
 # Features
 - Registration: register yourself by supplying a username, email and password. Logging in can be done using either username/email and password.
