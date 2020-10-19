@@ -22,6 +22,9 @@ gem "webpacker", "~> 4.0"
 
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
   # gem 'sqlite3', '~> 1.4'
 end
 
@@ -34,7 +37,6 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
   # Easy installation and use of web drivers to run system tests with browsers
   gem "webdrivers"
