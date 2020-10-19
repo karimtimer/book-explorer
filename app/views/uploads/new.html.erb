@@ -2,13 +2,12 @@
   <div class="col-lg-8 col-md-6 ml-auto mr-auto">
     <div class="jumbotron">
       <h1>Upload a file</h1>
-      <p>The upload must satisfy these criterias:</p>
+      <p>The file to upload must satisfy these criterias:</p>
       <ol>
-        <li> The file must be in csv format.</li>
-        <li> Must contain these headers <b>only</b>: Book Title,Book Author,	Date published,	ISBN,	publishers name </li>
-        <li> The ISBN must be unique for each book, otherwise the upload will fail.</li>
+        <li> The file must be in .csv format.</li>
+        <li> It must contain these headers <b>only</b>: Book Title,Book Author,	Date published,	ISBN,	publishers name </li>
+        <li> The ISBN must be valid, otherwise the upload will fail.</li>
       </ol>
-      <p> Here is a template you can use to fill in.</p>
     </div>
 
     <%= form_tag uploads_path, multipart: true  do %>
