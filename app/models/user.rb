@@ -16,15 +16,17 @@ class User < ApplicationRecord
     @login || username || email
   end
 
+  # rubocop:disable Lint/AssignmentInCondition
   def self.find_for_database_authentication warden_conditions
     conditions = warden_conditions.dup
-    if login == conditions.delete(:login)
+    if login = conditions.delete(:login)
       where(conditions.to_h).find_by(["lower(username) = :value OR lower(email) = :value", {value: login.downcase}])
     elsif conditions.key?(:username) || conditions.key?(:email)
       conditions[:email]&.downcase!
       find_by(conditions.to_h)
     end
   end
+  # rubocop:enable Lint/AssignmentInCondition
 
   def validate_username
     errors.add(:username, :invalid) if User.exists?(email: username)
