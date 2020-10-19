@@ -1,7 +1,10 @@
-require 'uuid'
+# frozen_string_literal: true
+
+require "uuid"
 
 class AmazonS3
   attr_reader :s3
+
   def initialize
     @s3 = set_resource
   end
@@ -9,21 +12,20 @@ class AmazonS3
   def uploader filename, user_id
     local_file_name = File.basename(filename.original_filename)
     aws_file_name = generate_uniq_name(local_file_name)
-    obj = @s3.bucket('karimtimer-book-explorer').object(aws_file_name)
+    obj = @s3.bucket("karimtimer-book-explorer").object(aws_file_name)
 
     obj.upload_file(filename)
 
-    upload = Upload.new(
+    Upload.new(
       url: obj.public_url,
       name: local_file_name,
       aws_filename: aws_file_name,
       user_id: user_id
     )
-    upload
   end
 
   def receiver upload_obj
-    bucket = @s3.bucket('karimtimer-book-explorer')
+    bucket = @s3.bucket("karimtimer-book-explorer")
     bucket.object(upload_obj.aws_filename).get.body.string
   end
 
@@ -35,7 +37,7 @@ class AmazonS3
 
     Aws::S3::Resource.new(access_key_id: access_key_id,
                           secret_access_key: secret_access_key,
-                          region: 'eu-west-2')
+                          region: "eu-west-2")
   end
 
   def generate_uniq_name name

@@ -1,0 +1,70 @@
+require: 
+  - rubocop-performance
+  - rubocop-rails
+
+Rails:
+  Enabled: true
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7.1
+  Exclude:
+    # Generated files
+    - Rakefile
+    - bin/*
+    - spec/support/helpers/user_helper.rb
+    - config/application.rb
+    - config/boot.rb
+    - config/environment.rb
+    - config/environments/*
+    - config/initializers/*
+    - db/**/*
+    - vendor/**/*
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+    - node_modules/**/**/*
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - edge
+Rails/UniqueValidationWithoutIndex:
+    Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+Style/Documentation:
+  Enabled: false
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ParameterLists:
+  Max: 4
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - is_
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+Style/HashSyntax:
+  Exclude:
+    - lib/tasks/*
+Style/AndOr:
+  EnforcedStyle: conditionals
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Rails/InverseOf:
+  Enabled: false
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+Style/ExponentialNotation:
+  Enabled: false
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: false
